@@ -15,7 +15,7 @@ export default Todos = props => {
     <TouchableOpacity onPress={props.done}>
       <View style={styles.container}>
         <Text
-          style={[styles.textStyle, { color: props.isDone ? "#bbb" : null }]}
+          style={[styles.textStyle, { color: props.isDone ? "#bbb" : '#F487B6' }]}
         >
           {props.todo}
         </Text>
@@ -32,16 +32,19 @@ export default Todos = props => {
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 0.2,
-    borderBottomColor: "#ccc",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 60
+    height: 60,
+    elevation: 3,
+    borderWidth: 0,
+    margin: 5,
   },
   textStyle: {
     fontSize: 16,
-    marginLeft: 10
+    marginLeft: 10,
+    color: '#F487B6',
+    fontSize: 18,
   },
   deleteStyle: {
     fontSize: 20,

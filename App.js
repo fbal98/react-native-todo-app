@@ -14,7 +14,6 @@ import {
   Keyboard,
   KeyboardAvoidingView
 } from "react-native";
-import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import Footer from "./src/components/Footer";
 
@@ -25,7 +24,6 @@ export default function App() {
         <StatusBar barStyle="dark-content" translucent />
         <View style={{ height: 44, backgroundColor: "#ff7675" }}></View>
         <SafeAreaView style={{ flex: 1 }}>
-          <Header />
           <Body />
         </SafeAreaView>
       </View>

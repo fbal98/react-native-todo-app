@@ -33,23 +33,22 @@ export default TodoBar = props => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 18,
+    backgroundColor: "#F0EEEE",
     height: 50,
-    backgroundColor: "gray",
+    borderRadius: 5,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
   },
   textInputStyle: {
-    height: 57,
-    color: "#fff",
-    fontSize: 19,
-    marginLeft: 5,
-    width: "79%"
+    fontSize: 18,
+    flex: 1
   },
   btnStyle: {
     width: "21%",
     height: "100%",
-    backgroundColor: "red",
+    backgroundColor: "#F487B6",
     alignItems: "center",
     justifyContent: "center"
   },

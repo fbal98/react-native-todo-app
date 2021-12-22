@@ -12,17 +12,8 @@ import Todos from "./Todos";
 export default Body = () => {
   const [todosArray, setTodo] = useState([]);
   const [todoInput, setTodoInput] = useState("");
-  //console.log(AsyncStorage.getAllKeys());
-  //wrong way to do it.
-  //const [isDone, setDone] = useState(false);
-  _storeData = async array => {
-    try {
-      await AsyncStorage.setItem("TheTodosArray", JSON.stringify(array));
-      console.log(AsyncStorage.getItem("@TheTodosArray"));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+
+
   const deleteTodo = itemToDelete => {
     setTodo(todosArray.filter(todo => todo != itemToDelete));
   };
@@ -37,6 +28,10 @@ export default Body = () => {
   if (!todosArray.length) {
     return (
       <View style={styles.container}>
+
+        <View style={styles.msgContainer}>
+          <Text style={styles.noTodoMsg}>You have nothing to do :(</Text>
+        </View>
         <TodoBar
           inputValue={todoInput}
           inputChange={setTodoInput}
@@ -49,38 +44,17 @@ export default Body = () => {
                   done: false
                 })
               );
-              _storeData(todosArray);
             }
 
             setTodoInput("");
           }}
         />
-        <View style={styles.msgContainer}>
-          <Text style={styles.noTodoMsg}>You have nothing to do :(</Text>
-        </View>
       </View>
     );
   }
   return (
     <View style={styles.container}>
-      <TodoBar
-        inputValue={todoInput}
-        inputChange={setTodoInput}
-        inputSubmit={() => {
-          //console.log(todoInput);
-          if (todoInput !== "") {
-            setTodo(
-              todosArray.concat({
-                id: todosArray.length,
-                value: todoInput,
-                done: false
-              })
-            );
 
-            setTodoInput("");
-          }
-        }}
-      />
 
       <FlatList
         data={todosArray}
@@ -100,13 +74,33 @@ export default Body = () => {
         }}
         keyExtractor={item => item.id.toString() + item.value + item.done}
       />
+      <TodoBar
+        inputValue={todoInput}
+        inputChange={setTodoInput}
+        inputSubmit={() => {
+          //console.log(todoInput);
+          if (todoInput !== "") {
+            setTodo(
+              todosArray.concat({
+                id: todosArray.length,
+                value: todoInput,
+                done: false
+              })
+            );
+
+            setTodoInput("");
+          }
+        }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: 18,
+    justifyContent: 'flex-end'
   },
   noTodoMsg: {
     fontWeight: "500",
