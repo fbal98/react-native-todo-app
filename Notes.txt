@@ -1,0 +1,20 @@
+#these are notes on doing this app.
+# 12/30/2019 by firas.
+
+*I had to put flex:1 on the safe area and the body in order to expand 
+the body.
+*the todo bar I added the value from props.
+*for delete an Item from the array I used filter() and had to pass
+the whole item object in the callBack func. in order to delete 1 item 
+proberly. otherwise if I use the id or value it deletes random elements 
+from the array.
+*add item in the array is easy I used concat() I think I can use push().
+*to dismiss the keyboard I added touchable without feedback to whole app
+then imported the keyboard from react native and used {Keyboard.dismiss} 
+on press.
+*to get the index of the specific item I used arr.findIndex(callBack).
+the callBack func. should look like this: obj => obj === item.
+where item is the element I wanna update.
+* to update the state of done of each items inside the array, I had to copy 
+the current array of objects into new newArr and updated the value using the 
+index then used useState to update current array into the new array.
